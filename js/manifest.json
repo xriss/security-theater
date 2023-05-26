@@ -1,27 +1,18 @@
 {
 
-  "description": "Altering HTTP responses",
+  "description": " Cors Proxy *fake* server (no external server needed) ",
   "manifest_version": 2,
-  "name": "http-response-filter",
+  "name": "security-theater",
   "version": "1.0",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/http-response",
-  "icons": {
-    "48": "pen.svg"
-  },
+  "homepage_url": "https://github.com/xriss/security-theater",
 
   "permissions": [
-    "webRequest", "webRequestBlocking", "https://example.com/*"
+    "webRequest", "webRequestBlocking", "*://*/*" 
   ],
 
   "background": {
     "scripts": ["background.js"]
   },
-
-  "browser_specific_settings": {
-    "gecko": {
-      "strict_min_version": "57.0a1"
-    }
-  }
 
 }
 

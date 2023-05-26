@@ -1,23 +1,33 @@
-function listener(details) {
-  let filter = browser.webRequest.filterResponseData(details.requestId);
-  let decoder = new TextDecoder("utf-8");
-  let encoder = new TextEncoder();
 
-  filter.ondata = event => {
-    let str = decoder.decode(event.data, {stream: true});
-    // Just change any instance of Example in the HTTP response
-    // to WebExtension Example.
-    str = str.replace(/Example/g, 'WebExtension Example');
-    filter.write(encoder.encode(str));
-    filter.disconnect();
+
+function getBase64(file) {
+const reader = new FileReader()
+return new Promise(resolve => {
+  reader.onload = ev => {
+	resolve(ev.target.result)
   }
-
-  return {};
+  reader.readAsDataURL(file)
+})
 }
 
+
+
+async function listener_before(details) {
+	console.log("Security Theatre before")
+	
+	let url=details.url
+	url=url.split("://cors.proxy/").join("://")
+
+	let response = await fetch(url)
+	let dataurl=await getBase64( await response.blob() )
+
+  return { redirectUrl:dataurl };
+}
+
+
 browser.webRequest.onBeforeRequest.addListener(
-  listener,
-  {urls: ["https://example.com/*"], types: ["main_frame"]},
+  listener_before,
+  {urls: ["*://cors.proxy/*"] },
   ["blocking"]
 );
 
