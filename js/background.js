@@ -16,10 +16,14 @@ async function listener_before(details) {
 	console.log("Security Theatre before")
 	
 	let url=details.url
-	url=url.split("://cors.proxy/").join("://")
+	console.log(url)
+	url=url.split("://cors.proxy/")[1]	
+	console.log(url)
 
 	let response = await fetch(url)
 	let dataurl=await getBase64( await response.blob() )
+
+	console.log(dataurl)
 
   return { redirectUrl:dataurl };
 }
