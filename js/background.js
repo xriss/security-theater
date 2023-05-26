@@ -1,5 +1,9 @@
 
 
+let fakeurl="https://example.com/#"
+
+
+
 function getBase64(file) {
 const reader = new FileReader()
 return new Promise(resolve => {
@@ -12,20 +16,38 @@ return new Promise(resolve => {
 
 
 
+
 async function listener_before(details) {
-	console.log("Security Theatre before")
-	
+
 	let url=details.url
-	console.log(url)
 	url=url.split("://cors.proxy/")[1]	
-	console.log(url)
 
-	let response = await fetch(url)
-	let dataurl=await getBase64( await response.blob() )
+// catch fake url redirect and replace content
+let f;f=async function listener_test(details) {
+	
+	browser.webRequest.onBeforeRequest.removeListener(f)
 
-	console.log(dataurl)
+  let filter = browser.webRequest.filterResponseData(details.requestId);
+  
+  filter.ondata = async function(event)
+  {
 
-  return { redirectUrl:dataurl };
+  	let response = await fetch(url)
+	let ab=await response.arrayBuffer()
+
+    filter.write(ab);
+    filter.disconnect();
+  }
+
+	return {};
+}
+browser.webRequest.onBeforeRequest.addListener(
+	f,
+  {urls: [fakeurl+url] },
+  ["blocking"]
+);
+
+  return { redirectUrl:fakeurl+url };
 }
 
 
