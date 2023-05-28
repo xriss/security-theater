@@ -1,19 +1,28 @@
 {
 
-  "description": " Cors Proxy *fake* server (no external server needed) ",
-  "manifest_version": 2,
-  "name": "security-theater",
-  "version": "1.0",
-  "homepage_url": "https://github.com/xriss/security-theater",
+	"description": "A cors-anywhere *fake* server. We intercept fetches to https://cors-anywhere.herokuapp.com/ and perform the fetch inside this browser extension instead.",
+	"manifest_version": 3,
+	"name": "security-theater",
+	"version": "1.0",
+	"homepage_url": "https://github.com/xriss/security-theater",
 
-  "permissions": [
-    "webRequest", "webRequestBlocking"
-,
-    "*://*/*" 
-  ],
+	"permissions": [
+	],
 
-  "background": {
-    "scripts": ["browser-polyfill.min.js","background.js"]
-  }
-}
+	"host_permissions": [
+		"*://*/*"
+	],
+
+
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": ["content.js"]
+		}
+	],
+
+	"background": {
+		"service_worker": "worker.js"
+	}
+ }
 
