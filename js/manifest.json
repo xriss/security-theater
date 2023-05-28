@@ -7,11 +7,13 @@
   "homepage_url": "https://github.com/xriss/security-theater",
 
   "permissions": [
-    "webRequest", "webRequestBlocking", "*://*/*" 
+    "webRequest", "webRequestBlocking"
+,
+    "*://*/*" 
   ],
 
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["browser-polyfill.min.js","background.js"]
   }
 }
 

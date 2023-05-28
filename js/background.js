@@ -1,6 +1,6 @@
 
 
-let fakeurl="https://example.com/#"
+let fakeurl="https://example.com/"
 
 
 
@@ -15,38 +15,14 @@ return new Promise(resolve => {
 }
 
 
+function listener_before(details) {
 
-
-async function listener_before(details) {
+console.log(details.url)
 
 	let url=details.url
 	url=url.split("://cors.proxy/")[1]	
 
-// catch fake url redirect and replace content
-let f;f=async function listener_test(details) {
-	
-	browser.webRequest.onBeforeRequest.removeListener(f)
-
-  let filter = browser.webRequest.filterResponseData(details.requestId);
-  
-  filter.ondata = async function(event)
-  {
-
-  	let response = await fetch(url)
-	let ab=await response.arrayBuffer()
-
-    filter.write(ab);
-    filter.disconnect();
-  }
-
-	return {};
-}
-browser.webRequest.onBeforeRequest.addListener(
-	f,
-  {urls: [fakeurl+url] },
-  ["blocking"]
-);
-
+console.log("redirect: "+fakeurl+url)
   return { redirectUrl:fakeurl+url };
 }
 
@@ -56,4 +32,37 @@ browser.webRequest.onBeforeRequest.addListener(
   {urls: ["*://cors.proxy/*"] },
   ["blocking"]
 );
+
+
+// catch fake url redirect and replace content
+function listener_test(details) {
+	
+	let url=details.url.substring(fakeurl.length)
+	
+console.log("test: "+details.url)
+
+//	browser.webRequest.onBeforeRequest.removeListener(f)
+
+console.log(browser.webRequest)
+  let filter = browser.webRequest.filterResponseData(details.requestId);
+  
+  filter.ondata = async function(event)
+  {
+
+  	let response = await fetch(url)
+	let ab=await response.arrayBuffer()
+console.log(ab)
+    filter.write(ab);
+    filter.disconnect();
+  }
+
+	return {};
+}
+
+browser.webRequest.onBeforeRequest.addListener(
+	listener_test,
+  {urls: [fakeurl+"*"] },
+  ["blocking"]
+);
+
 
