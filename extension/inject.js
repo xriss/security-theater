@@ -52,6 +52,7 @@ security_theater.worker_fetch=async function(url,opts)
 	console.log("worker_fetch: "+url);
 	let response=await security_theater.send({greeting: "hello2"})
 	console.log("worker_response: "+response);
+	console.log(response);
 //	const response = await chrome.runtime.sendMessage(security_theater.id,{greeting: "hello"});
 //	console.log("response");
 //	console.log(response);
