@@ -10,33 +10,38 @@ SECURITY THEATER
 
 
 With this plugin installed and enabled any fetch(url) where the url 
-begins with exactly https://cors-anywhere.eherokuapp.com/ will be 
+begins with exactly https://cors-anywhere.herokuapp.com/ will be 
 handled internally and never reach the 
-https://cors-anywhere.herokuapp.com/ server.
+https://cors-anywhere.herokuapp.com/ server. We redirect and satisfy 
+the request internally.
 
-The response returned in this case is created by fetxh(datauri) so is 
-not 100% transparent, noteably the url will of course be wrong but it 
-should work in most situations.
+The response returned in this case is created by fetch(datauri) so is 
+not 100% transparent, notably the url will of course be wrong but it 
+should work as a direct replacement unless you are doing something 
+really strange. The opts can not contain any functions (eg signal:) as 
+functions can not be passed to the context where the real fetch is 
+happening. But these will just be silently filtered out.
 
 We do this by injecting and monkey patching the fetch function in the 
 page and then passing the detail onto the worker thread where it can be 
 processed.
 
-This plugin was created so I could create an in browser RSS reader 
+This extension was created so I could create an in browser RSS reader 
 without needing an external bouncer to fetch the feeds.
 
 https://github.com/xriss/arss
 
-Ideally I would just like for my java script application to disable 
-some security and just work in a safe and frendly controlled way. But 
-browsers do not allow this for security theater reasons.
+Ideally I would just like for my application to ask the user to disable 
+some security and just work in a safe and controlled way but browser 
+makers simply refuse to implement this for political reasons.
 
-Instead we have to do dumb things like this.
+Instead we have to do dumb things like this, just to help us get back 
+some of the old freedoms we used to have.
 
-Note the only thing this plugin really does is remove the need for a 
+Note the only thing this extension really does is remove the need for a 
 pointless and wasteful external server by running that server inside 
 the browser.
 
-Sadly if you try and restrict the sites this plugin is enabled on then it 
-will fail, it has to be enabled for all web pages for the internal 
-fetches to not also suffer from CORS issues.
+Sadly if you try and restrict the sites this extension is enabled on 
+then it will fail, it has to be enabled for all web pages for the 
+internal fetches to not also suffer from CORS issues.
