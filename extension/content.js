@@ -9,8 +9,10 @@ window.addEventListener("message", (event) =>
 		{
 			(async function(){
 				
-				let r={"data":"is some data"}
-				event.ports[0].postMessage({result: r})
+				let r=await chrome.runtime.sendMessage(event.data)
+				console.log("isblob")
+				console.log(r)
+				event.ports[0].postMessage(r)
 
 			})()
 		}

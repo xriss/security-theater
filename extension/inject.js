@@ -37,7 +37,7 @@ console.log(e.data)
 			}
 			else
 			{
-				res(e.data.result)
+				res(e.data)
 			}
 		}
 
@@ -50,14 +50,10 @@ security_theater.worker_fetch=async function(url,opts)
 {
 	console.log(security_theater.id)
 	console.log("worker_fetch: "+url);
-	let response=await security_theater.send({greeting: "hello2"})
+	let response=await security_theater.send({url:url,opts:opts})
 	console.log("worker_response: "+response);
 	console.log(response);
-//	const response = await chrome.runtime.sendMessage(security_theater.id,{greeting: "hello"});
-//	console.log("response");
-//	console.log(response);
-
-//	return await security_theater.old_fetch.call(window,url,opts)
+	return response
 }
 
 // set flag so you can test if this patch is enabled or use it directly
