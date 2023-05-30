@@ -24,7 +24,12 @@ chrome.runtime.onMessage.addListener(
 		{
 			(async function(){
 				try{
-					let r=await fetch( request.url , request.opts )
+					let opts=request.opts || {}
+					const controller = new AbortController()
+					const signal = controller.signal
+					setTimeout(function(){controller.abort()}, 10*1000)
+					opts.signal=signal // timeout
+					let r=await fetch( request.url , opts )
 					let b=await r.blob()
 					let s=await blobToBase64(b)
 					sendResponse( { result:s } )

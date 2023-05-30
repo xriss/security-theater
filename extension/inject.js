@@ -46,8 +46,12 @@ security_theater.send=function(msg)
 // run a fetch in our worker
 security_theater.worker_fetch=async function(url,opts)
 {
+	if(opts)
+	{
+		if(opts.signal){opts.signal=undefined}
+	}
 //	console.log("worker_fetch: "+url);
-	let datauri=await security_theater.send({url:url,opts:opts})
+	let datauri=await security_theater.send({url:url,opts:opts } )
 //	console.log("worker_response: "+datauri);
 	return await security_theater.old_fetch.call(window,datauri)
 }
