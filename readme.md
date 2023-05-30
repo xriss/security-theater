@@ -18,9 +18,9 @@ the request internally.
 The response returned in this case is created by fetch(datauri) so is 
 not 100% transparent, notably the url will of course be wrong but it 
 should work as a direct replacement unless you are doing something 
-really strange. The opts can not contain any functions (eg signal:) as 
-functions can not be passed to the context where the real fetch is 
-happening. But these will just be silently filtered out.
+really strange. The extra options can also not contain any functions 
+(eg signal:) as functions can not be passed to the context where the 
+real fetch is happening. But these will just be silently filtered out.
 
 We do this by injecting and monkey patching the fetch function in the 
 page and then passing the detail onto the worker thread where it can be 
@@ -32,7 +32,7 @@ without needing an external bouncer to fetch the feeds.
 https://github.com/xriss/arss
 
 Ideally I would just like for my application to ask the user to disable 
-some security and just work in a safe and controlled way but browser 
+some security and then work in a safe and controlled way but browser 
 makers simply refuse to implement this for political reasons.
 
 Instead we have to do dumb things like this, just to help us get back 
