@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<script>
+(async function(){
+
+let baseurl="https://cors-anywhere.herokuapp.com/"
+let test=async function(url)
+{
+	try{
+		console.log(url)
+		let response=await fetch(url)
+		console.log(response)
+		console.log( await response.text() )
+	}catch(e){}
+}
+
+
+console.log( chrome.runtime )
+
+
+await test(baseurl+"https://google.com")
+//await test("https://google.com")
+
+})()
+		</script>
+	</head>
+<body>
+	<div class="test_options">OPTIONS</div>
+	<div class="test_result">RESULTS</div>
+</body>
+</html>
