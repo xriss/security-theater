@@ -6,14 +6,14 @@ security_theater.baseurl="https://cors-anywhere.herokuapp.com/"
 security_theater.old_fetch=window.fetch
 security_theater.fetch=function(url,opts)
 {
-	if( url && url.startsWith(security_theater.baseurl) ) // we will deal with this
+	if( (typeof url == "string") && url.startsWith(security_theater.baseurl) ) // we will deal with this
 	{
 		console.log("worker_fetch");
 		return security_theater.worker_fetch(url.substring(security_theater.baseurl.length),opts)
 	}
 	else
 	{
-		console.log("old_fetch");
+		console.log("old_fetch",url);
 		return security_theater.old_fetch.call(window,url,opts)
 	}
 }
