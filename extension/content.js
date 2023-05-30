@@ -1,5 +1,5 @@
 
-console.log("runtime: "+chrome.runtime)
+//console.log("runtime: "+chrome.runtime)
 
 window.addEventListener("message", (event) =>
 {
@@ -10,8 +10,6 @@ window.addEventListener("message", (event) =>
 			(async function(){
 				
 				let r=await chrome.runtime.sendMessage(event.data)
-				console.log("isblob")
-				console.log(r)
 				event.ports[0].postMessage(r)
 
 			})()

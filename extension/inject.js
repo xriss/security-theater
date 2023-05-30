@@ -8,12 +8,12 @@ security_theater.fetch=function(url,opts)
 {
 	if( (typeof url == "string") && url.startsWith(security_theater.baseurl) ) // we will deal with this
 	{
-		console.log("worker_fetch");
+//		console.log("worker_fetch");
 		return security_theater.worker_fetch(url.substring(security_theater.baseurl.length),opts)
 	}
 	else
 	{
-		console.log("old_fetch",url);
+//		console.log("old_fetch",url);
 		return security_theater.old_fetch.call(window,url,opts)
 	}
 }
@@ -28,8 +28,6 @@ security_theater.send=function(msg)
 
 		channel.port1.onmessage = function(e)
 		{
-console.log("got: "+e)
-console.log(e.data)
 			channel.port1.close()
 			if (e.data.error)
 			{
@@ -37,7 +35,7 @@ console.log(e.data)
 			}
 			else
 			{
-				res(e.data)
+				res(e.data.result)
 			}
 		}
 
@@ -48,12 +46,10 @@ console.log(e.data)
 // run a fetch in our worker
 security_theater.worker_fetch=async function(url,opts)
 {
-	console.log(security_theater.id)
-	console.log("worker_fetch: "+url);
-	let response=await security_theater.send({url:url,opts:opts})
-	console.log("worker_response: "+response);
-	console.log(response);
-	return response
+//	console.log("worker_fetch: "+url);
+	let datauri=await security_theater.send({url:url,opts:opts})
+//	console.log("worker_response: "+datauri);
+	return await security_theater.old_fetch.call(window,datauri)
 }
 
 // set flag so you can test if this patch is enabled or use it directly
