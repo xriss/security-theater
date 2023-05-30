@@ -1,6 +1,6 @@
 {
 
-	"description": "A cors-anywhere *fake* server. We intercept fetches to https://cors-anywhere.herokuapp.com/ and perform the fetch inside this browser extension instead.",
+	"description": "A cors-anywhere *fake* server that monkey patches fetches to https://cors-anywhere.herokuapp.com/",
 	"manifest_version": 3,
 	"name": "security-theater",
 	"version": "1.0",
