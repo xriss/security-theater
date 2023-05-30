@@ -8,10 +8,10 @@ let test=async function(url)
 {
 	try{
 		console.log(url)
-		let response=await fetch(url)
+		let response=await fetch(url,{test:function(){}})
 		console.log(response)
 		console.log( await response.text() )
-	}catch(e){}
+	}catch(e){console.log(e)}
 }
 
 
