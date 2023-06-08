@@ -4,11 +4,11 @@ let security_theater={}
 security_theater.baseurl="https://cors-anywhere.herokuapp.com/"
 
 security_theater.old_fetch=window.fetch
-security_theater.fetch=function(url,opts)
+security_theater.new_fetch=function(url,opts)
 {
 	if( (typeof url == "string") && url.startsWith(security_theater.baseurl) ) // we will deal with this
 	{
-		return security_theater.worker_fetch(url.substring(security_theater.baseurl.length),opts)
+		return security_theater.fetch(url.substring(security_theater.baseurl.length),opts)
 	}
 	else
 	{
@@ -42,7 +42,7 @@ security_theater.send=function(msg)
 }
 
 // run a fetch in our worker
-security_theater.worker_fetch=async function(url,opts)
+security_theater.fetch=async function(url,opts)
 {
 	if(opts)
 	{
@@ -55,4 +55,4 @@ security_theater.worker_fetch=async function(url,opts)
 // set flag so you can test if this patch is enabled or use it directly
 window.security_theater={}
 // apply patch
-window.fetch=security_theater.fetch
+window.fetch=security_theater.new_fetch
