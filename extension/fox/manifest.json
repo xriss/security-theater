@@ -1,0 +1,36 @@
+{
+
+	"description": "A cors-anywhere *fake* server that monkey patches fetches to https://cors-anywhere.herokuapp.com/",
+	"manifest_version": 3,
+	"name": "security-theater",
+	"version": "1.0",
+	"homepage_url": "https://github.com/xriss/security-theater",
+
+	"permissions": [
+		"nativeMessaging"
+	],
+
+	"host_permissions": [
+		"*://*/*"
+	],
+
+	"background": {
+		"service_worker": "worker.js"
+	},
+
+	"content_scripts": [
+		{
+			"world": "MAIN",
+			"run_at":"document_start","all_frames":true,
+			"matches": ["*://*/*"],
+			"js": ["inject.js"]
+		}
+		,
+		{
+			"run_at":"document_start","all_frames":true,
+			"matches": ["*://*/*"],
+			"js": ["content.js"]
+		}
+	]
+ }
+

@@ -21,13 +21,13 @@
 	"content_scripts": [
 		{
 			"world": "MAIN",
- 			"run_at":"document_start","all_frames":true,
+			"run_at":"document_start","all_frames":true,
 			"matches": ["*://*/*"],
 			"js": ["inject.js"]
 		}
 		,
 		{
- 			"run_at":"document_start","all_frames":true,
+			"run_at":"document_start","all_frames":true,
 			"matches": ["*://*/*"],
 			"js": ["content.js"]
 		}
