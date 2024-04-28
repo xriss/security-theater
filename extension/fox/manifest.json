@@ -14,23 +14,16 @@
 		"*://*/*"
 	],
 
-	"background": {
-		"service_worker": "worker.js"
-	},
-
 	"content_scripts": [
-		{
-			"world": "MAIN",
-			"run_at":"document_start","all_frames":true,
-			"matches": ["*://*/*"],
-			"js": ["inject.js"]
-		}
-		,
 		{
 			"run_at":"document_start","all_frames":true,
 			"matches": ["*://*/*"],
 			"js": ["content.js"]
 		}
-	]
+	],
+	
+	"background": {
+		"scripts": ["worker.js"]
+	}
  }
 
