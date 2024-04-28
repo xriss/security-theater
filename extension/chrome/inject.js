@@ -52,7 +52,7 @@ security_theater.fetch=async function(url,opts)
 	return await security_theater.old_fetch.call(window,datauri) // create fake fetch response to a datauri
 }
 
-// set flag so you can test if this patch is enabled or use it directly
-window.security_theater={}
 // apply patch
 window.fetch=security_theater.new_fetch
+// set flag so you can test if this patch is enabled or use it directly
+window.security_theater_fetch=security_theater.fetch
