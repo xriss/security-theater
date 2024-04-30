@@ -45,3 +45,13 @@ the browser.
 Sadly if you try and restrict the sites this extension is enabled on 
 then it will fail, it has to be enabled for all web pages for the 
 internal fetches to not also suffer from CORS issues.
+
+In firefox you must enable for all sites, ( permissions tab after manage 
+extension ) or cors will be blocked for all sites.
+
+This extension technically works in firefox (after some effort on my 
+part), however you can not easily install unsigned extensions. So, it 
+does not actually work in firefox in any real sense of the word.
+
+Uhm, just fuck firefox and its huge market share?
+

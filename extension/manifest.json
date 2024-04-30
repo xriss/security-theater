@@ -6,6 +6,13 @@
 	"version": "1.0",
 	"homepage_url": "https://github.com/xriss/security-theater",
 
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "security-theater@xixs.com",
+			"strict_min_version": "42.0"
+		}
+	},
+
 	"permissions": [
 		"nativeMessaging",
 		"storage"

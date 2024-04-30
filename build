@@ -1,0 +1,5 @@
+cd `dirname $0`
+
+cd extension
+zip ../security-theater.xpi ./*
+cd ..
