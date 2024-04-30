@@ -7,7 +7,8 @@
 	"homepage_url": "https://github.com/xriss/security-theater",
 
 	"permissions": [
-		"nativeMessaging"
+		"nativeMessaging",
+		"storage"
 	],
 
 	"host_permissions": [
@@ -15,7 +16,8 @@
 	],
 
 	"background": {
-		"service_worker": "worker.js"
+		"service_worker": "worker.js",
+		"scripts": ["worker.js"]
 	},
 
 	"content_scripts": [

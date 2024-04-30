@@ -1,4 +1,7 @@
 
+if( window.wrappedJSObject )
+{
+
 let security_theater={}
 // the url we will check for and replace
 security_theater.baseurl="https://cors-anywhere.herokuapp.com/"
@@ -58,8 +61,9 @@ security_theater.fetch=function(url,opts)
 window.wrappedJSObject.fetch=exportFunction(security_theater.new_fetch,window)
 window.wrappedJSObject.security_theater_fetch=exportFunction(security_theater.fetch,window)
 
-window.addEventListener("message", function(event)
-{
+}
+
+window.addEventListener("message", function(event){
 	if( event.data.security_theater )
 	{
 		try

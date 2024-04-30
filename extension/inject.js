@@ -1,4 +1,7 @@
 
+if(!window.wrappedJSObject) // do not run in firefox
+{
+
 let security_theater={}
 // the url we will check for and replace
 security_theater.baseurl="https://cors-anywhere.herokuapp.com/"
@@ -56,3 +59,5 @@ security_theater.fetch=async function(url,opts)
 window.fetch=security_theater.new_fetch
 // set flag so you can test if this patch is enabled or use it directly
 window.security_theater_fetch=security_theater.fetch
+
+}
