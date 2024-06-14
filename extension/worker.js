@@ -18,7 +18,8 @@ chrome.runtime.onMessage.addListener(
 					// check sender.origin is allowed in options
 					let o=await chrome.storage.sync.get(
 { hosts:
-`.*://.*\\.github.io
+`.*
+.*://.*\\.github.io
 .*://localhost(:.*)?
 .*://127\\.0\\.0\\.1(:.*)?
 `

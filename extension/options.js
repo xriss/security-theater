@@ -17,7 +17,8 @@ const saveOptions = function(){
 const restoreOptions = function(){
 	chrome.storage.sync.get(
 		{ hosts:
-`.*://.*\\.github.io
+`.*
+.*://.*\\.github.io
 .*://localhost(:.*)?
 .*://127\\.0\\.0\\.1(:.*)?
 `
