@@ -16,7 +16,14 @@ chrome.runtime.onMessage.addListener(
 			(async function(){
 				try{
 					// check sender.origin is allowed in options
-					let o=await chrome.storage.sync.get();
+					let o=await chrome.storage.sync.get(
+{ hosts:
+`.*://.*\\.github.io
+.*://localhost(:.*)?
+.*://127\\.0\\.0\\.1(:.*)?
+`
+}
+					)
 					let e=new Error("Origin not allowed in security-theater options")
 					if(o.hosts)
 					{
