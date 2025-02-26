@@ -1,6 +1,6 @@
 {
 
-	"description": "A cors-anywhere *fake* server that monkey patches fetches to https://cors-anywhere.herokuapp.com/",
+	"description": "A cors-anywhere *fake* server that monkey patches fetches to https://cors-anywhere.herokuapp.com/ and runs them internally.",
 	"manifest_version": 3,
 	"name": "security-theater",
 	"version": "1.0",
@@ -28,7 +28,7 @@
 		"page": "options.html",
 		"open_in_tab": false
 	},
-  
+
 	"background": {
 		"service_worker": "worker.js",
 		"scripts": ["worker.js"]
