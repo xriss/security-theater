@@ -1,19 +1,20 @@
-
-
-SECURITY THEATER
-
-
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/-E4_9TuE6Ss/0.jpg)](https://www.youtube.com/watch?v=-E4_9TuE6Ss)
 
 
-[INSTALL ON FIREFOX](blessed/security-theater-1.0.xpi)
+[DOWNLOAD XPI AND INSTALL ON FIREFOX HERE](https://github.com/xriss/security-theater/raw/refs/heads/main/blessed/security-theater-1.0.xpi)
 
 You must enable for all sites, ( permissions tab after clicking manage
 extension ) or internal CORS will still be blocked for all sites.
 
 
-SECURITY THEATER
+[DOWNLOAD ZIP AND INSTALL ON CHROME HERE](https://github.com/xriss/security-theater/raw/refs/heads/main/security-theater.zip)
 
+This should just work, on CHROME / EDGE / CHROMIUM etc but is not signed
+so the browser may nag you to uninstall it every couple of weeks.
+
+
+SECURITY THEATER
+================
 
 With this plugin installed and enabled any fetch(url) where the url
 begins with exactly https://cors-anywhere.herokuapp.com/ will be
