@@ -46,10 +46,8 @@ https://github.com/xriss/arss
 
 Ideally I would just like for my application to ask the user to disable
 some security and then work in a safe and controlled way but browser
-makers simply refuse to implement this sort of freadom for political
-reasons not security.
-
-Instead we have to do dumb things like this, I miss the old days.
+makers simply refuse to respect users. Instead every single fucking app
+is just a webpage with security disabled.
 
 Note the only thing this extension really does is remove the need for a
 pointless and wasteful external server by running that server inside
@@ -61,4 +59,4 @@ web pages for the internal fetches to not also suffer from CORS
 blocking issues.
 
 Instead you can use the internal options to restrict the monkey
-patching to only some sites, by default it is all sites.
+patching to only some sites, by default it is enabled for all sites.
