@@ -9,8 +9,14 @@ extension ) or internal CORS will still be blocked for all sites.
 
 [DOWNLOAD ZIP AND INSTALL ON CHROME HERE](https://github.com/xriss/security-theater/raw/refs/heads/main/security-theater.zip)
 
-This should just work, on CHROME / EDGE / CHROMIUM etc but is not signed
-so the browser may nag you to uninstall it every couple of weeks.
+This should just work, on CHROME / EDGE / CHROMIUM etc but is not
+signed so the browser may nag you to uninstall it every couple of weeks
+and you will have to jump through hoops to install it.
+
+So download the zip and extract it into a directory or clone this repo.
+Turn on developer mode in chrome and load an unpacked extension from
+the extension folder of this repo or whereever you extracted the zip
+to.
 
 
 SECURITY THEATER
